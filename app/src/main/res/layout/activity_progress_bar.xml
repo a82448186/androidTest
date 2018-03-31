@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		tools:context="com.example.tf018145.myapplication.ProgressBarActivity">
+
+	<ProgressBar
+			style="?android:attr/progressBarStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			tools:layout_editor_absoluteY="80dp" tools:layout_editor_absoluteX="157dp" android:id="@+id/progressBar"/>
+	<ProgressBar
+			style="?android:attr/progressBarStyleSmall"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			tools:layout_editor_absoluteY="206dp" tools:layout_editor_absoluteX="205dp" android:id="@+id/progressBar2"/>
+	<ProgressBar
+			android:progress="10"
+			android:secondaryProgress="20"
+			style="?android:attr/progressBarStyleHorizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/progressBar4"/>
+	<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="增加" android:id="@+id/add"/>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="减少" android:id="@+id/reduce"/>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="重置" android:id="@+id/reset"/>
+	</LinearLayout>
+	<TextView
+			android:text="TextView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" android:id="@+id/textView"/>
+
+</LinearLayout>

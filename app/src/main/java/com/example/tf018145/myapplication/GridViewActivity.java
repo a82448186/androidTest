@@ -1,6 +1,7 @@
 package com.example.tf018145.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
@@ -19,23 +21,36 @@ import java.util.Map;
 public class GridViewActivity extends AppCompatActivity {
 
     GridView gridView;
+    SimpleAdapter simpleAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid_view);
         gridView = (GridView) findViewById(R.id.gridView);
 
-        SimpleAdapter simpleAdapter = new GrivAdapter(this,getData(),R.layout.grid_item,new String[]{"img","title"},new int[]{R.id.gridViewImg,R.id.gridViewText});
+        simpleAdapter = new GrivAdapter(this,getData(),R.layout.grid_item,new String[]{"img","title"},new int[]{R.id.gridViewImg,R.id.gridViewText});
 
         gridView.setAdapter(simpleAdapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Map<String, Object> map = (Map<String, Object>)simpleAdapter.getItem(i);
+                Intent intent = new Intent(GridViewActivity.this, (Class)map.get("class"));
+                startActivity(intent);
+            }
+        });
     }
 
     public List<Map<String, Object>> getData() {
         List data = new ArrayList<>();
-        for (int i = 0; i <10 ; i++) {
+        Class[] classes = {mainActivity.class,ListViewActivity.class,DateTimePickerActivity.class,GridViewActivity.class,ProgressBarActivity.class};
+        String[] titles = {"main", "ListView","DateTimePicker","GridView","ProgressBar"};
+        for (int i = 0; i <classes.length ; i++) {
             Map<String, Object> map = new HashMap<>();
             map.put("img", R.mipmap.ic_launcher);
-            map.put("title","text"+i);
+            map.put("title",titles[i]);
+            map.put("class", classes[i]);
             data.add(map);
         }
         return  data;
