@@ -33,33 +33,42 @@ public class mainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Toast.makeText(mainActivity.this,"onTouchEvent", Toast.LENGTH_LONG).show();
+        Toast.makeText(mainActivity.this, "onTouchEvent", Toast.LENGTH_LONG).show();
         return super.onTouchEvent(event);
     }
+
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        try{
+        try {
             Toast.makeText(mainActivity.this, String.valueOf(event.getKeyCode()), Toast.LENGTH_LONG).show();
-        }catch (Exception e) {
-            Toast.makeText(mainActivity.this,e.toString(), Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(mainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
         }
 
         return super.onKeyUp(keyCode, event);
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        return super.onKeyDown(keyCode, event);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_test);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
-
         btn1 = (Button) findViewById(R.id.button1);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(getWindow().getDecorView().findViewById(android.R.id.content).getWindowToken(), 0);
+                inputMethodManager.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
+
+                btn1.requestFocus();
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
-                Toast.makeText(mainActivity.this, "关闭键盘", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mainActivity.this, inputMethodManager.isActive()+"", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -110,11 +119,11 @@ public class mainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 Intent data = new Intent();
-                EditText editText = (EditText)findViewById(R.id.editText);
+                EditText editText = (EditText) findViewById(R.id.editText);
 
                 data.putExtra("data", editText.getText().toString());
 
-                setResult(2,data);
+                setResult(2, data);
                 finish();
             }
         });

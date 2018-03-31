@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.TextView;
 
 /**
@@ -22,6 +23,8 @@ public class FirstActivity extends AppCompatActivity {
 
     Button btn4;
 
+    Button btn5;
+
     TextView textView1;
 
     @Override
@@ -32,6 +35,7 @@ public class FirstActivity extends AppCompatActivity {
         btn2 = (Button) findViewById(R.id.button6);
         btn3 = (Button) findViewById(R.id.button7);
         btn4 = (Button) findViewById(R.id.button8);
+        btn5 = (Button) findViewById(R.id.button9);
         textView1 = (TextView) findViewById(R.id.firstActivityTextView1);
 
 
@@ -65,6 +69,14 @@ public class FirstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FirstActivity.this, DateTimePickerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FirstActivity.this, GridViewActivity.class);
                 startActivity(intent);
             }
         });
