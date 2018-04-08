@@ -19,6 +19,7 @@ public class DateTimePickerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.date_time_picker);
 
+
        Calendar calendar = Calendar.getInstance();
 
         int year = calendar.get(Calendar.YEAR);
