@@ -67,11 +67,12 @@ public class mainActivity extends AppCompatActivity implements View.OnClickListe
                 inputMethodManager.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
 
                 btn1.requestFocus();
+
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
                 Toast.makeText(mainActivity.this, inputMethodManager.isActive()+"", Toast.LENGTH_SHORT).show();
+
             }
         });
-
 
         btn2 = (Button) findViewById(R.id.button2);
         btn2.setOnClickListener(new MyOnClickListener() {

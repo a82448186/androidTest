@@ -64,7 +64,7 @@ public class GridViewActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            View view =  super.getView(position, convertView, parent);
+             View view =  super.getView(position, convertView, parent);
             WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
             DisplayMetrics displayMetrics = new DisplayMetrics();
             windowManager.getDefaultDisplay().getMetrics(displayMetrics);
