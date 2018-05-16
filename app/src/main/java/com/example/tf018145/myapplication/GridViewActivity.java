@@ -44,8 +44,8 @@ public class GridViewActivity extends AppCompatActivity {
 
     public List<Map<String, Object>> getData() {
         List data = new ArrayList<>();
-        Class[] classes = {mainActivity.class,ListViewActivity.class,DateTimePickerActivity.class,GridViewActivity.class,ProgressBarActivity.class};
-        String[] titles = {"main", "ListView","DateTimePicker","GridView","ProgressBar"};
+        Class[] classes = {mainActivity.class,ListViewActivity.class,DateTimePickerActivity.class,GridViewActivity.class,ProgressBarActivity.class,RfidActivity.class,FragmentActivity.class};
+        String[] titles = {"main", "ListView","DateTimePicker","GridView","ProgressBar","Rfid","Fragment"};
         for (int i = 0; i <classes.length ; i++) {
             Map<String, Object> map = new HashMap<>();
             map.put("img", R.mipmap.ic_launcher);

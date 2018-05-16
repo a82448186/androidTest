@@ -64,10 +64,6 @@ public class mainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
-
-                btn1.requestFocus();
-
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
                 Toast.makeText(mainActivity.this, inputMethodManager.isActive()+"", Toast.LENGTH_SHORT).show();
 
