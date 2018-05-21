@@ -2,16 +2,14 @@ package com.example.tf018145.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.SimpleAdapter;
+import android.widget.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,8 +42,22 @@ public class GridViewActivity extends AppCompatActivity {
 
     public List<Map<String, Object>> getData() {
         List data = new ArrayList<>();
-        Class[] classes = {mainActivity.class,ListViewActivity.class,DateTimePickerActivity.class,GridViewActivity.class,ProgressBarActivity.class,RfidActivity.class,FragmentActivity.class};
-        String[] titles = {"main", "ListView","DateTimePicker","GridView","ProgressBar","Rfid","Fragment"};
+        Class[] classes = {
+                mainActivity.class,
+                ListViewActivity.class,
+                DateTimePickerActivity.class,
+                GridViewActivity.class,
+                ProgressBarActivity.class,
+                RfidActivity.class,
+                FragmentActivity.class,
+                ViewPagerActivity.class,
+                ViewFlipperActivity.class,
+                ScrollerViewActivity.class
+        };
+        String[] titles = {
+                "main", "ListView","DateTimePicker","GridView","ProgressBar",
+                "Rfid","Fragment","viewPager","viewFillper","scrollerView"
+        };
         for (int i = 0; i <classes.length ; i++) {
             Map<String, Object> map = new HashMap<>();
             map.put("img", R.mipmap.ic_launcher);
