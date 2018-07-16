@@ -6,11 +6,18 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.*;
+import com.alibaba.fastjson.JSONObject;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +45,7 @@ public class GridViewActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        getJson();
     }
 
     public List<Map<String, Object>> getData() {
@@ -67,6 +75,12 @@ public class GridViewActivity extends AppCompatActivity {
         }
         return  data;
     };
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        Toast.makeText(this, event.getKeyCode(), Toast.LENGTH_LONG).show();
+        return super.dispatchKeyEvent(event);
+    }
 
     public class GrivAdapter extends SimpleAdapter {
 
@@ -99,5 +113,23 @@ public class GridViewActivity extends AppCompatActivity {
             view.setLayoutParams(params);
             return  view;
         }
+    }
+
+    public void getJson () {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder().url("http://47.98.166.6/version.json").build();
+                try {
+                    Response response = client.newCall(request).execute();
+                    String s = response.body().string();
+                    String a = (String) JSONObject.parseObject(s).get("versionCode");
+                    Log.i("version", a);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }
